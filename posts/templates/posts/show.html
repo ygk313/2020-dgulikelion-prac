@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>상세보기 페이지</h1>
+    <h3>글 제목 : {{ post.title }} </h3><br>
+    <h3>글 내용 : {{ post.content }} </h3><br>
+    <h3>작성 시각 : {{ post.created_at }} </h3><br>
+{% endblock %}

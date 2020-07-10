@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h1>글 목록입니다.</h1>
+        <a href="{% url 'posts:new' %}">write</a>
+        <div class="row">
+                {% for post in posts %}
+                    <div class="col-md-4 col-12">
+                        <div class="card" style="width: 18rem; margin-top: 20px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">{{ post.content }}</p>
+                                <p>{{ post.created_at }}</p>
+                                <a href="{% url 'posts:show' post.pk%}" class="btn btn-primary">show</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}
