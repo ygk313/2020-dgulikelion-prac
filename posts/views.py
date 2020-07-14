@@ -18,3 +18,11 @@ def main(request):
 def show(request, id):
     post = Post.objects.get(pk=id)
     return render(request, 'posts/show.html', {'post':post})
+
+#수정하기
+def update(request):
+    return render()
+
+#삭제하기
+def delete(request):
+    return render()
