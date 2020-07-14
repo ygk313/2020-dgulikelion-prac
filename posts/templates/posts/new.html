@@ -2,23 +2,18 @@
 
 {% block content %}
 <div class="container">
-    <form action ="{% url 'posts:create' %}" method="POST">
-        {% csrf_token %}
-        <h1>
-            새로운 글 작성하기
-        </h1>
         <form action="{% url 'posts:create' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
-            <label>글 제목</label>
-            <input type="text" class="form-control" name="title">
-            </div>
-            <div class="form-group">
-            <label>글 내용</label>
-            <textarea class="form-control" name="content"></textarea>
+                <h1> 글 쓰기 </h1>
+                <label>글 제목</label>
+                <input type="text" class="form-control" name="title">
+                </div>
+                <div class="form-group">
+                <label>글 내용</label>
+                <textarea class="form-control" name="content"></textarea>
             </div>
             <input type="submit" value="글 작성" class="btn btn-outline-primary">
         </form> 
-    </form>
 </div>
 {% endblock %}
