@@ -6,3 +6,4 @@ class Post(models.Model):
     view_count = models.IntegerField(default = 0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='images/', null=True)
