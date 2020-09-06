@@ -5,12 +5,21 @@
     <h3>글 내용 : {{ post.content }} </h3><br>
     <h3>작성 시각 : {{ post.created_at }} </h3><br>
     <h3>수정 시각 : {{ post.updated_at }} </h3><br>
-    
+    <h4>조회 수: {{ post.view_count }} </h4><br>
+
     {% if post.user %}
         <h3> 작성자 : {{ post.user }}</h3>
     {% else %}
         <h3> 작성자 : 알수 없음</h3>
     {% endif %}
+
+    <a href="{% url 'posts:post_like' post.id %}?redirect_to=show">
+        {% if user in post.like_user_set.all %}
+            <i class="fas fa-heart"></i>
+        {% else %}
+            <i class="far fa-heart"></i>
+        {% endif %}
+    </a>
     
     {% if post.user == user %}
         <a href="{% url 'posts:update' post.pk %}"> 수정하기 </a>
@@ -20,4 +29,23 @@
     {% if post.image %}
         <img src="{{ post.image.url }}">
     {% endif %}
+
+    <div class="container mt-5">
+        <form class="form-row" action="{% url 'posts:create_comment' post.id %}" method="POST">
+          {% csrf_token %}
+          <textarea class="form-control col-11 mr-2" name="content" placeholder="댓글 내용 입력..."></textarea>
+          <input type="submit" class="btn btn-primary" value="확인">
+        </form>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        {% for comment in comments %}
+            <div class="card">
+                <div class="card-body">
+                    <b>{{ comment.writer }}</b> : {{ comment.content }}<br>
+                    <small>{{ comment.created_at }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

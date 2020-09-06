@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- {% include 'shared/_navbar.html' %} -->
+<div class="container">
+    {% if user.is_authenticated %}
+        <h1>좋아요를 누른 글 목록</h1>
+        <div class="row">
+            {% for like in likes %}
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem; margin-top: 20px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ like.post.title }}</h5>
+                            <p>조회수 : {{ like.post.view_count }}</p>
+                            <a href="{% url 'posts:show' like.post.id %}" class="btn btn-primary">상세보기</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h3>로그인 후 이용이 가능합니다.</h3>
+        <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
+        <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
+    {% endif %}
+</div>
+{% endblock %}

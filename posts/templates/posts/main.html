@@ -13,6 +13,14 @@
                                     <h5 class="card-title">{{ post.title }}</h5>
                                     <p class="card-text">{{ post.content }}</p>
                                     <p>{{ post.created_at }}</p>
+                                    <a href="{% url 'posts:post_like' post.id %}">
+                                        {% if user in post.like_user_set.all %}
+                                            <i class="fas fa-heart"></i>
+                                        {% else %}
+                                            <i class="far fa-heart"></i>
+                                        {% endif %}
+                                    </a>
+                                    <br><br>
                                     <a href="{% url 'posts:show' post.pk%}" class="btn btn-primary">show</a>
                                 </div>
                             </div>

@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Post,Comment
+from .models import Post, Comment
 
-admin.site.register(Comment)
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display =(
@@ -14,4 +13,11 @@ class PostAdmin(admin.ModelAdmin):
 
     search_fields =(
         'title',
+    )
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display =(
+        'id', 
+        'content',
     )
