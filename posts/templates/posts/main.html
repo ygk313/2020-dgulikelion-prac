@@ -20,6 +20,15 @@
                                             <i class="far fa-heart"></i>
                                         {% endif %}
                                     </a>
+                                    <div class="follow-btn">
+                                        {% if user != post.user %}
+                                            {% if user in post.user.followers.all %}
+                                                <a href="{% url 'users:follow_toggle' post.user.id %}" class = "btn btn-danger"> 팔로잉 </a>
+                                            {% else %}
+                                                <a href="{% url 'users:follow_toggle' post.user.id %}" class = "btn btn-outline-danger">팔로우 </a>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
                                     <br><br>
                                     <a href="{% url 'posts:show' post.pk%}" class="btn btn-primary">show</a>
                                 </div>

@@ -1,0 +1,44 @@
+{% extends 'base.html '%}
+{% block content %}
+<div class="container">
+    <h1>Mypage</h1>
+    <br>
+    <div class="followers_card" style="display: flex;">
+        <h3><h2>나를</h2> 팔로우 한 사람</h3>
+    </div>    
+    <div class="new" style="margin-bottom: 5%;">
+        {% for follower in myprofile.followers.all %}
+            <h2>{{ follower.username }}</h2>
+        {% endfor %}
+    </div>
+
+    <div class="followings_card " style="display: flex;">
+        <h3><h2>내가</h2> 팔로우 한 사람</h3>
+    </div> 
+    <div class="new" style="margin-bottom: 5%;">
+    {% for following in myprofile.followings.all %}
+        <h2>{{ following.username }}</h2>
+    {% endfor %}
+    </div>
+    
+    <div class="posts_card " style="display: flex;">
+        <h3>내가 작성한 글 목록</h3>
+    </div> 
+
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-4 col-12">
+                <div class="card" style="width: 18rem; margin-top: 20px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content }}</p>
+                        <p>{{ post.created_at }}</p>
+                        <br><br>
+                        <a href="{% url 'posts:show' post.pk%}" class="btn btn-primary">show</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'introduction',
     'posts',
+    'users',
 
     #allauth
     'allauth',
@@ -137,6 +138,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'myblog', 'media')
 
+
+AUTH_USER_MODEL = 'users.User'
 AUTHENTICATION_BACKENDS = [
 
 'django.contrib.auth.backends.ModelBackend',
@@ -145,3 +148,4 @@ AUTHENTICATION_BACKENDS = [
 ]
 SITE_ID=1
 LOGIN_REDIRECT_URL = '/'
+

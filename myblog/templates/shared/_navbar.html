@@ -22,7 +22,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_change_password' %}">비밀번호 변경</a>
           </li>
-        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:mypage' %}">마이페이지</a>
+          </li>
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_login' %}">로그인</a>
           </li>
@@ -30,6 +33,7 @@
             <a class="nav-link" href="{% url 'account_signup' %}">회원가입</a>
           </li>
         {% endif %}
+        
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
